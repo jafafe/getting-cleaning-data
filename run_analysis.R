@@ -15,7 +15,7 @@ loadAndMerge <- function(dir) {
 loadFeatures <- function() {
   features <- fread(file.path(data.directory, "features.txt"))
   setnames(features, names(features), c("feature", "description"))
-  features <- features[grepl("mean\\(\\)|std\\(\\)", description)]
+  #features <- features[grepl("mean\\(\\)|std\\(\\)", description)]
 }
 
 trainingdata <- loadAndMerge(trainDir)
@@ -24,4 +24,6 @@ totaldata <- rbind(trainingdata, testdata)
 rm(trainingdata, testdata)
 
 features <- loadFeatures()
-View(features)
+# View(features)
+colnames(totaldata) <- c("subject","activity",features$description)
+View(totaldata)
