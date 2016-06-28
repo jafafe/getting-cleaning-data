@@ -1,6 +1,7 @@
 setwd("~/workspace/coursera/cleandata/project/getting-cleaning-data")
 source("constants.R")
 library(data.table)
+library(plyr)
 
 loadSubjects <- function() {
   subjectsTraining <- fread(file.path(data.directory, trainDir, paste("subject_",trainDir, ".txt", sep="")))
